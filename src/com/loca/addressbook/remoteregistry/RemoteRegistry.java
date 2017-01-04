@@ -3,7 +3,7 @@ package com.loca.addressbook.remoteregistry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RemoteRegistry {
+public class RemoteRegistry{
 
     private List<RemoteContact> remoteRegistry = new ArrayList<>();
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.loca.addressbook.exceptions.InvalidCommandParameterException;
 import com.loca.addressbook.registry.Contact;
-import com.loca.addressbook.registry.Registry;
+import com.loca.addressbook.registry.LocalRegistry;
 import com.loca.addressbook.remoteregistry.RemoteRegistry;
 import com.loca.addressbook.userinterface.ConsolePrinter;
 import com.loca.addressbook.userinterface.ContactFormatter;
@@ -15,13 +15,13 @@ public class SearchCommand implements Command {
 	
 	private CommandType commandType = CommandType.SEARCH;
 	private ConsolePrinter consolePrinter;
-	private Registry registry;
+	private LocalRegistry localRegistry;
 	private RemoteRegistry remoteRegistry;
 	private List<String> parameters;
 	
-	public SearchCommand (ConsolePrinter consolePrinter, Registry registry, RemoteRegistry remoteRegistry, List<String> parameters) {
+	public SearchCommand (ConsolePrinter consolePrinter, LocalRegistry localRegistry, RemoteRegistry remoteRegistry, List<String> parameters) {
 		this.consolePrinter = consolePrinter;
-		this.registry = registry;
+		this.localRegistry = localRegistry;
 		this.remoteRegistry = remoteRegistry;
 		this.parameters = parameters;
 	}
@@ -36,7 +36,7 @@ public class SearchCommand implements Command {
     	String output;
     	String searchWord = parameters.get(0);
 		List<Contact> contacts = new ArrayList<>();
-		contacts.addAll(registry.search(searchWord));
+		contacts.addAll(localRegistry.search(searchWord));
 		contacts.addAll(remoteRegistry.search(searchWord));
 
 		if (contacts.isEmpty()) {
