@@ -6,16 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Registry {
+public class LocalRegistry{
 
     private List<Contact> localContactList = new ArrayList<>();
 
 
     public void addContact(String firstName, String lastName, String email) {
 
-        localContactList.add(new LocalContact(firstName, lastName, email, UUID.randomUUID()));
+        localContactList.add(new LocalContact(firstName, lastName, email, UUID.randomUUID()));      // <- UML
     }
-
     public List<Contact> getContacts() {
         return this.localContactList;
     }

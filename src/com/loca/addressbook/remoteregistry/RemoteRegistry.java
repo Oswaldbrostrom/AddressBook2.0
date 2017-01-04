@@ -3,7 +3,7 @@ package com.loca.addressbook.remoteregistry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RemoteRegistry {
+public class RemoteRegistry{
 
     private List<RemoteContact> remoteRegistry = new ArrayList<>();
 
@@ -11,7 +11,7 @@ public class RemoteRegistry {
         return remoteRegistry;
     }
 
-    public List<RemoteContact> search(String search) {
+    public List<RemoteContact> search(String search) {          // dubbel kod, strider mot solid.
         List<RemoteContact> tempRegistry = new ArrayList <>();
         for (RemoteContact contact : remoteRegistry){
             if(contact.getFirstName().toLowerCase().startsWith(search.toLowerCase()) ||

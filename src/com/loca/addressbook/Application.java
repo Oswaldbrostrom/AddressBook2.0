@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.loca.addressbook.registry.AutoSave;
-import com.loca.addressbook.registry.Registry;
+import com.loca.addressbook.registry.LocalRegistry;
 import com.loca.addressbook.registry.RegistryPersister;
 import com.loca.addressbook.remoteregistry.CatalogueLoader;
 import com.loca.addressbook.remoteregistry.RemoteRegistry;
@@ -18,12 +18,12 @@ public class Application {
         application.start();
     }
 	
-	private static final String HOSTNAME_1 = "172.20.200.157";
+	private static final String HOSTNAME_1 = "172.20.200.157";		//<- mer än 1 ansvar.
 	private static final String HOSTNAME_2 = "172.20.200.173";
 	private static final String HOSTNAME_3 = "172.20.201.62";
     private Console console = new Console();
-    private Registry registry = new Registry();
-    private RegistryPersister registryPersister = new RegistryPersister(registry);
+    private LocalRegistry localRegistry = new LocalRegistry();
+    private RegistryPersister registryPersister = new RegistryPersister(localRegistry);
     private RemoteRegistry remoteRegistry = new RemoteRegistry();
 
     public void start() {
@@ -55,7 +55,7 @@ public class Application {
 		return hostNames;
 	}
 
-	private void startAutoSaveDaemon() {
+	private void startAutoSaveDaemon() {		//Ska göras i AutoSave klassen.
 		Runnable runnable  = new AutoSave(registryPersister);
     	Thread autoSave = new Thread(runnable);
         autoSave.setDaemon(true);
@@ -63,7 +63,7 @@ public class Application {
 	}
 	
 	private void initiateCommandLineInterface() {
-		CommandLineInterface commandLineInterface = new CommandLineInterface(registry, remoteRegistry, console, this);
+		CommandLineInterface commandLineInterface = new CommandLineInterface(localRegistry, remoteRegistry, console, this);
 		commandLineInterface.start();
 	}
 	 
@@ -71,5 +71,4 @@ public class Application {
 		registryPersister.save();
 		console.close();
 	}
-		
 }

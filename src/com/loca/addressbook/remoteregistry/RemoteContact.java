@@ -3,7 +3,6 @@ package com.loca.addressbook.remoteregistry;
 import com.loca.addressbook.registry.Contact;
 import com.loca.addressbook.registry.ContactDetails;
 
-
 public class RemoteContact implements Contact {
     private String uuid;
     private ContactDetails contactDetails;

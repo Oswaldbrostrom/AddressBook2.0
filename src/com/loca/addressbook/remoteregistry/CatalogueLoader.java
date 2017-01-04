@@ -1,11 +1,10 @@
 package com.loca.addressbook.remoteregistry;
 
-public class CatalogueLoader implements Runnable {
-
-    private RemoteCatalogueFactory catalogueFactory = new RemoteCatalogueFactory();
+public class CatalogueLoader implements Runnable{
+    private static final int PORT = 61616;
+    private RemoteCatalogueFactory catalogueFactory = new RemoteCatalogueFactory(PORT);
     private RemoteRegistry remoteRegistry;
     private String hostName;
-
 
     public CatalogueLoader(RemoteRegistry remoteRegistry, String hostName) {
         this.remoteRegistry = remoteRegistry;
@@ -16,9 +15,9 @@ public class CatalogueLoader implements Runnable {
     public void run() {
         RemoteCatalogueProxy remoteCatalogueProxy = catalogueFactory.create(hostName);
 
-        for (String contact : remoteCatalogueProxy.getContacts()) {
+        for(String contact : remoteCatalogueProxy.getContacts()) {
             String[] splittedList = contact.split(" ");
-            remoteRegistry.add(splittedList[0], splittedList[1], splittedList[2], splittedList[3]);
+            remoteRegistry.add(splittedList[0],splittedList[1],splittedList[2],splittedList[3]);
         }
 
     }
