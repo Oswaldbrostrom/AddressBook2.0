@@ -1,8 +1,8 @@
 package com.loca.addressbook.remoteregistry;
 
 public class CatalogueLoader implements Runnable{
-    private static final int PORT = 61616;
-    private RemoteCatalogueFactory catalogueFactory = new RemoteCatalogueFactory(PORT);
+
+    private RemoteCatalogueFactory catalogueFactory = new RemoteCatalogueFactory();
     private RemoteRegistry remoteRegistry;
     private String hostName;
 

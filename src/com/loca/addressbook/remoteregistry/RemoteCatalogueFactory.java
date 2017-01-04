@@ -2,10 +2,10 @@ package com.loca.addressbook.remoteregistry;
 
 public class RemoteCatalogueFactory {
 
-    private int defaultPort;
+    private int defaultPort = 61616;
 
-    public RemoteCatalogueFactory(int defaultPort) {
-        this.defaultPort = defaultPort;
+    public RemoteCatalogueFactory() {
+
     }
 
     public RemoteCatalogueProxy create(String host) {
