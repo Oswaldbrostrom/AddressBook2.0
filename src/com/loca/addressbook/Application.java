@@ -18,7 +18,7 @@ public class Application {
         application.start();
     }
 	
-	private static final String HOSTNAME_1 = "172.20.200.157";
+	private static final String HOSTNAME_1 = "172.20.200.157";		//<- mer än 1 ansvar.
 	private static final String HOSTNAME_2 = "172.20.200.173";
 	private static final String HOSTNAME_3 = "172.20.201.62";
     private Console console = new Console();
@@ -55,7 +55,7 @@ public class Application {
 		return hostNames;
 	}
 
-	private void startAutoSaveDaemon() {
+	private void startAutoSaveDaemon() {		//Ska göras i AutoSave klassen.
 		Runnable runnable  = new AutoSave(registryPersister);
     	Thread autoSave = new Thread(runnable);
         autoSave.setDaemon(true);
@@ -71,5 +71,4 @@ public class Application {
 		registryPersister.save();
 		console.close();
 	}
-		
 }

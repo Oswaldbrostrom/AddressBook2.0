@@ -32,7 +32,7 @@ public class SearchCommand implements Command {
     	searchContacts();
     }
     
-    private void searchContacts() {
+    private void searchContacts() {				//<-- liknar listContacts i klassen ListeCommand. WET princip
     	String output;
     	String searchWord = parameters.get(0);
 		List<Contact> contacts = new ArrayList<>();
@@ -48,8 +48,8 @@ public class SearchCommand implements Command {
 		consolePrinter.print(output);
 	}
 
-	private String makeOutput(List<Contact> contacts) {
-		StringBuilder output = new StringBuilder(1000);
+	private String makeOutput(List<Contact> contacts) {		//dubbel kod för ListCommand
+		StringBuilder output = new StringBuilder(1000);	//onödig optimering, finns även i ListCommand.
 		for(Contact contact : contacts) {
 			String formattedContact = ContactFormatter.format(contact);
 			output.append(formattedContact);

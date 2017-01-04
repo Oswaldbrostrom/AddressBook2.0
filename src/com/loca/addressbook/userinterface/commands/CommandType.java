@@ -15,7 +15,7 @@ public enum CommandType {
 	private String successMessage;
 	private String failureMessage;
 	
-	CommandType(String commandName, int parametersCount, String description, String successMessage, String failMessage) {
+	CommandType(String commandName, int parametersCount, String description, String successMessage, String failMessage) {	//Finns inte i UML
 		this.commandName = commandName;
 		this.parametersCount = parametersCount;
 		this.description = description;

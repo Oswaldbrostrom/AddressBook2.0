@@ -13,7 +13,7 @@ public class Registry {
 
     public void addContact(String firstName, String lastName, String email) {
 
-        localContactList.add(new LocalContact(firstName, lastName, email, UUID.randomUUID()));
+        localContactList.add(new LocalContact(firstName, lastName, email, UUID.randomUUID()));      // <- UML
     }
 
     public List<Contact> getContacts() {
